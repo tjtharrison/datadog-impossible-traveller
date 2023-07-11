@@ -1,0 +1,20 @@
+# Docker-compose file for local Dockerfile
+# build and run
+# ----------------------------------------------
+version: '3.7'
+services:
+  web:
+    build: .
+    volumes:
+      - ./logs:/app/logs
+  datadoghq:
+    container_name: dd-agent
+    volumes:
+      - './logs:/app/logs'
+      - './config/python-conf.yaml:/etc/datadog-agent/conf.d/python.d/conf.yaml'
+      - '/sys/fs/cgroup/:/host/sys/fs/cgroup:ro'
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - '/proc/:/host/proc/:ro'
+    env_file:
+        -   .env
+    image: 'gcr.io/datadoghq/agent:7'

@@ -1,0 +1,6 @@
+.idea/*
+resources/logs/*
+.env
+terraform/.terraform*
+terraform/terraform.tfstate*
+terraform/*.tfvars

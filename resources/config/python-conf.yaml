@@ -1,0 +1,12 @@
+init_config:
+
+instances:
+
+##Log section
+logs:
+
+  - type: file
+    path: "/app/logs/output.log"
+    service: "example-logger"
+    source: python
+    sourcecategory: sourcecode
