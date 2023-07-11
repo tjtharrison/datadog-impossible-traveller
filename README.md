@@ -28,6 +28,8 @@ datadog_app_key = "<your app key>"
 
 ## Create the Datadog resources
 
+Before proceeding to sending logs into Datadog, the first thing we should configure is the log parsing and monitor. These are deployed by Terraform and authentication happens with the Datadog API via the credentials entered earlier.
+
 ```
 cd terraform
 terraform init
@@ -38,9 +40,11 @@ terraform apply -var-file=demo.tfvars
 
 To properly test the script, you will need to run it twice, in two very geographically different locations (Eg use your flavour of cloud provider to launch an instance in a different region).
 
+The script requires docker to be installed on the instance you are running the script on and should be launched using docker compose
+
 ```
 cd ../resources
 docker-compose up -d
 ```
 
-The script will write logs into Datadog from the two instances and, all being well, will trigger an alert.
+The script will write logs into Datadog from the two instances, grouped together by the field @username with @source_ip being the field indicating impossible travel
