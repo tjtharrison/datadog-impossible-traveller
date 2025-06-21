@@ -1,5 +1,5 @@
 # From python3
-FROM python:3.10.12-slim-bullseye
+FROM python:3.13.5-slim-bullseye
 
 # Set the working directory to /app
 WORKDIR /app
